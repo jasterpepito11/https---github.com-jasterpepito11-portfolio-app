@@ -1,29 +1,32 @@
 import ProfileComponent from './pages/home/profile';
-import { ThemeProvider } from './ThemeProvider';
-import HeaderComponent from './pages/header';
-import { BrowserRouter} from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeProvider';
+import HeaderComponent from './pages/header/header';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 
+import SidebarComponent from './pages/sidebar/sidebar';
+import ContactComponent from './pages/contact/contact';
+import ExperienceComponent from './pages/experience/experience';
+import AboutComponent from './pages/about/about';
 function App() {
 
 
   return (
-  <div className='container bg-cyan-600  dark:bg-gray-800 h-full box-border'>
+  <div className='container-fluid bg-cyan-600  dark:bg-gray-700 min-h-screen box-border overflow-hidden'>
     <BrowserRouter>
     <ThemeProvider>
       <HeaderComponent />
-      <div className="main mx-40 relative bg-gradient-to-r from-white">
-       <section id="profile-section" className="h-screen mt-[80px]">
-          <ProfileComponent />
-        </section>
-        <section id="about-section" className="justify-center align-middle h-screen mt-[80px] bg-blue-200">
-          About me
-        </section>
-        <section id="experience-section" className="justify-center align-middle h-screen mt-[80px] bg-amber-200">
-          Work Experience
-        </section>
-        <section id="contact-section" className="justify-center align-middle h-screen mt-[80px] bg-lime-200">
-          Contact me
-        </section>
+      <div className="main bg-cyan-600 dark:bg-gray-700 font-source w-full">
+       <Routes>
+        <Route path="/">
+          <Route index element={<ProfileComponent />}/>
+          <Route path="profile" element={<ProfileComponent />}/>
+          <Route path="about" element={<AboutComponent />}/>
+          <Route path="experience" element={<ExperienceComponent />}/>
+          <Route path="contact" element={<ContactComponent />}/>
+        </Route>
+        <Route path="*" element={<ProfileComponent />} />
+       </Routes>
+       <SidebarComponent />
       </div>
       </ThemeProvider>
     </BrowserRouter>

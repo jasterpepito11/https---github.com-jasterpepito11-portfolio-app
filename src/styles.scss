@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'animate.css';
+
+@layer base {
+  @font-face {
+    font-family: 'Source Code Pro';
+    font-weight: 500;
+    src: url('./assets/fonts/SourceCodePro-Bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Flood Std Regular';
+    src: url('./assets//fonts/Flood\ Std\ Regular.otf') format('opentype');
+  }
+}
+
+.main {
+  position: absolute;
+  height: calc(100% - 80px);
+  top: 80px;
+  overflow: auto;
+}
+

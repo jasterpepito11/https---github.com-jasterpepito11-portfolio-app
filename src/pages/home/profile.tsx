@@ -1,82 +1,74 @@
-
-import { faLinkedin, faGithub, faJava, faAngular, faReact, faVuejs, faSquareJs } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from 'react';
-import { PROFILE_PIC_PLACEHOLDER } from '../../Constants';
-
-
+import { useState, useEffect, useContext } from "react"
+import { useNavigate } from "react-router-dom";
+import AnimatedLettersComponent from "../../components/AnimatedLettersComponent";
+import {PORTFOLIO_ICON, DARK_PORTFOLIO_ICON, PROFILE_IMG_OG, PROFILE_IMG_ANIME } from '../../constants';
+import { ThemeContext } from '../../contexts/ContextManager';
+import { THEME } from '../../utilities/dark-mode-toggler';
+import './index.scss';
 export default function ProfileComponent() {
+    const { theme } = useContext(ThemeContext);
+    const navigate = useNavigate();
+    const name = "oshua Pepito,"
+    const jobDesc = "I create and develop"
+    const webDev = "web applications."
+    const [letterClass, setLetterClass] = useState('text-animate');
+    const nameArray = [...name]
+    const jobArray = [...jobDesc]
+    const jobArray2 = [...webDev]
+
+    useEffect(() => {
+     setTimeout(() => {
+        setLetterClass('text-animate-hover');
+      }, 8000)
+    }, [])
+    const handleContact = () => {
+        navigate("/contact");
+    }
     return (
-        <div className="relative pt-[80px] grid grid-cols-2 gap-4">
-            <div className="col-span-1">
+        <div className="profile relative mx-8 md:pt-0 pt-[80px] grid grid-cols-2 xl:grid-cols-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-4 h-full">
+            <div className="col-span-1 xl:col-span-1 lg:col-span-2 lg:order-first lg:pl-0 lg:my-auto md:my-start md:pl-10 md:order-last lg:ml-10 sm:order-last">
                 <h1 className="flex w-full h-18">
-                    <span className='rubber animated rubberBand text-white text-7xl'>H</span>
-                    <span className='rubber animated rubberBand text-white text-7xl'>i</span>
-                    <span className='rubber animated rubberBand text-white text-7xl'>!</span>
+                    <span className={`${letterClass}` + ' text-white text-7xl '}>H</span>
+                    <span className={`${letterClass} _12` + ' text-white text-7xl'}>i</span>
+                    <span className={`${letterClass} _13` + ' text-white text-7xl'}>!</span>
                 </h1>
                 <div className="flex w-full h-18">
-                    <span className='rubber animated rubberBand text-white text-5xl align-bottom leading-[72px]'>I</span>
-                    <span className='rubber animated rubberBand text-white text-5xl align-bottom leading-[72px]'>'</span>
-                    <span className='rubber animated rubberBand text-white text-5xl align-bottom leading-[72px] pr-5'>m</span>
-                    <span className='rubber animated rubberBand dark:text-cyan-600 text-gray-800 text-6xl drop-shadow-lg'>Joshua Pepito.</span>
+                    <span className={`${letterClass} _14` + ' text-white text-6xl align-bottom '}>I</span>
+                    <span className={`${letterClass} _15` + ' text-white text-6xl align-bottom pr-5'}>'m</span>
+                    <img className="logo" src={(theme == THEME.DARK) ? PORTFOLIO_ICON:  DARK_PORTFOLIO_ICON} alt="Developer Name" />
+                    <AnimatedLettersComponent classWrapper="animated-container dark:text-yellow-300 text-gray-800 text-5xl align-bottom drop-shadow-lg" letterClass={letterClass} strArray={nameArray} idx={16}/>
                 </div>
                 <div className="flex w-full">
-                    <span className='rubber animated rubberBand text-white text-5xl'>I create and develop </span>
+                    <AnimatedLettersComponent classWrapper="text-white text-5xl" letterClass={letterClass} strArray={jobArray} idx={20}/>
                 </div>
                 <div className="flex w-full">
-                    <span className='rubber animated rubberBand text-white text-5xl'>web applications using</span>
+                    <AnimatedLettersComponent classWrapper="text-white text-5xl" letterClass={letterClass} strArray={jobArray2} idx={20}/>
+                </div>
+                <div className="job-title flex w-full mt-2">
+                    <span className="text-base text-slate-400">&lt;title&gt;<span className="text-yellow-300">Full-stack Web Developer</span>&lt;/title&gt;</span>
+                </div>
+                <div className="language flex w-full mt-2">
+                    <span className="text-base text-slate-400">&lt;code lang="<span className="text-yellow-300">Java, JavaScript</span>"/&gt;</span>
+                </div>
+                <div className="location flex w-full h-18 mt-2">
+                    <span className="text-base text-slate-400">&lt;address&gt;<span className="text-yellow-300">Philippines</span>&lt;/address&gt;</span>
+                </div>
+                <button onClick={handleContact} className="contact-btn bg-transparent text-xl hover:bg-cyan-500 text-yellow-300 font-semibold hover:text-white py-2 px-4 border dark:border-cyan-500 border-white hover:border-transparent rounded sm:mb-[80px]">Contact Me</button>
+            </div>
+            <div className="col-span-1 xl:col-span-1 lg:col-span-1 lg:my-auto lg:order-last md:my-auto md:order-first sm:order-first sm:mb-10">
+                <div className="flex w-full justify-center">
+                    <div className="flip-card">
+                        <div className="flip-card-inner">
+                            <div className="card-front">
+                                <img className="rounded-full border border-gray-100 shadow-sm h-[300px]" src={PROFILE_IMG_ANIME} alt="front-end" />
+                            </div>
+                            <div className="card-back">
+                                <img className="rounded-full border border-gray-100 shadow-sm h-[300px]" src={PROFILE_IMG_OG} alt="back-end" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="col-span-1">
-                <div className="animation-box relative h-[600px] w-[600px]">
-                    <div className="stack angular">
-                        <div className='relative'>
-                            <FontAwesomeIcon icon={faAngular} size='6x' flip='horizontal' className='absolute text-white top-[5.25rem] -right-10' />
-                        </div>
-                    </div>
-                    <div className="stack react">
-                        <div className='relative'>
-                            <FontAwesomeIcon icon={faReact} size='6x' flip='horizontal' className='absolute text-white top-[5.25rem] -right-10' />
-                        </div>
-                    </div>
-                    <div className="stack vue">
-                        <div className='relative'>
-                            <FontAwesomeIcon icon={faVuejs} size='6x' flip='horizontal' className='absolute text-white top-[5.25rem] -right-10' />
-                        </div>
-                    </div>
-                    <div className="stack java">
-                        <div className='relative'>
-                            <FontAwesomeIcon icon={faSquareJs} size='6x' className='absolute text-white top-[5.25rem] -right-10' />
-                        </div>
-                    </div>
-                    <div className="shadow"></div>
-                </div>
-            </div>
-
-
         </div>
-        // <div className="flex relative h-5/6 items-center justify-center border-grey-400">
-        //     <div className='w-full max-w-md bg-gray-300 rounded-lg border mt-12 border-gray-200 shadow-md dark:bg-cyan-900 dark:border-gray-700'>
-        //     <div className="w-full max-w-md bg-gradient-to-r from-cyan-500"></div>
-        //         <div className="flex justify-end px-4 pt-10"></div>
-        //         <div className="flex flex-col items-center pb-10">
-        //             <img className="mb-3 w-40 h-40 rounded-full shadow-lg" src={PROFILE_PIC_PLACEHOLDER} alt="image" />
-        //             <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Joshua Lester Pepito</h5>
-        //             <span className="text-sm text-cyan-500 dark:text-purple-300">Full Stack Developer </span>
-        //             <div className="flex mt-4 space-x-3 md:mt-6">
-        //                 <div className='inline-flex space-x-0 group cursor-pointer focus:ring-purple-100 focus:ring-2'>
-        //                     <div className="min-h-fit inline-flex items-center text-md font-medium text-center text-purple-700 bg-white hover:text-purple-500 hover:bg-gray-200 hover:border-purple-100 focus:ring-2 focus:outline-none  
-        //       dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:ring-gray-500"><FontAwesomeIcon icon={faLinkedin} size='2x' /></div>
-        //                     <div className="hidden group-hover:block ease-out hover:translate-x-1 transition-all rounded bg-gray-200 hover:bg-gray-300 text-gray-700 font-small px-1 rounded-l">
-        //                         /joshua-lester-pepito
-        //                     </div>
-        //                 </div>
-
-        //                 <button className="min-h-fit inline-flex items-center text-md font-medium text-center text-purple-700 bg-white hover:text-purple-500 hover:bg-gray-200 hover:border-purple-100 focus:ring-2 focus:outline-none  dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:ring-gray-500"><FontAwesomeIcon icon={faGithub} size='2x' /></button>
-        //             </div>
-        //         </div>
-        //     </div>
-
-        // </div>
     )
 }

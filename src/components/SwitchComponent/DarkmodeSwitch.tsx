@@ -2,7 +2,7 @@ import { faSun } from '@fortawesome/free-regular-svg-icons';
 import { faSun as faDarkSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from 'react';
-import { ThemeContext } from '../../ContextManager';
+import { ThemeContext } from '../../contexts/ContextManager';
 import { THEME } from '../../utilities/dark-mode-toggler';
 
 export function DarkModeSwitch() {
