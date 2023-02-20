@@ -2,7 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import  DarkModeToggler from "../../utilities/dark-mode-toggler";
 import { Link, useNavigate, NavLink} from 'react-router-dom';
 import { ThemeContext } from '../../contexts/ContextManager';
-import {PORTFOLIO_ICON, DARK_PORTFOLIO_ICON, RESUME_LINK } from '../../constants';
+import PORTFOLIO_ICON from "@/assets/jpepito_logo.png";
+import DARK_PORTFOLIO_ICON from "@/assets/jpepito_logo_inverted.png";
+import {RESUME_LINK } from '../../constants';
 import { THEME } from '../../utilities/dark-mode-toggler';
 
 const baseNavLinkClass = "text-base font-bold" +

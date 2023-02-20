@@ -1,7 +1,11 @@
 import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import AnimatedLettersComponent from "../../components/AnimatedLettersComponent";
-import {PORTFOLIO_ICON, DARK_PORTFOLIO_ICON, PROFILE_IMG_OG, PROFILE_IMG_ANIME } from '../../constants';
+
+import PORTFOLIO_ICON from "@/assets/jpepito_logo.png";
+import DARK_PORTFOLIO_ICON from "@/assets/jpepito_logo_inverted.png";
+import PROFILE_IMG_OG from "@/assets/jl-og.png";
+import PROFILE_IMG_ANIME from "@/assets/jl-animated.png";
 import { ThemeContext } from '../../contexts/ContextManager';
 import { THEME } from '../../utilities/dark-mode-toggler';
 import './index.scss';
