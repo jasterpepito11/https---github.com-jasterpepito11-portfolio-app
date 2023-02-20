@@ -99,7 +99,7 @@ export default function ExperienceComponent() {
               </div>
             </AccordionBody>
           </Accordion>
-          <Accordion className='w-full mb-10' animate={customAnimation} nonce={undefined} onResize={undefined} onResizeCapture={undefined} open={false} >
+          <Accordion className='w-full mb-10' animate={customAnimation} nonce={undefined} onResize={undefined} onResizeCapture={undefined} open={open === 3} >
             <AccordionHeader onClick={() => handleOpen(3)} className='text-base text-white dark:hover:text-cyan-600 hover:text-yellow-300' nonce={undefined} onResize={undefined} onResizeCapture={undefined}>
               <span className='text-white dark:hover:text-cyan-600 hover:text-yellow-300'>Other works:</span>
             </AccordionHeader>
