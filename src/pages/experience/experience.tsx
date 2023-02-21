@@ -41,7 +41,7 @@ export default function ExperienceComponent() {
         <Fragment>
           <Accordion className='w-full' open={open === 1} animate={customAnimation} nonce={undefined} onResize={undefined} onResizeCapture={undefined}>
             <AccordionHeader onClick={() => handleOpen(1)} className='text-base text-white dark:hover:text-cyan-600 hover:text-yellow-300' nonce={undefined} onResize={undefined} onResizeCapture={undefined}>
-              <span className='text-white dark:hover:text-cyan-600 hover:text-yellow-300'>Senior Software Engineer @Novare Technologies Inc</span><span className='float-right'>2018-2022</span>
+              <span className='text-white dark:hover:text-cyan-600 hover:text-yellow-300'>Senior Software Engineer @Novare Technologies Inc</span><span className='float-right'>2018-2023</span>
             </AccordionHeader>
             <AccordionBody className='border-b'>
               <div className='w-full'>
